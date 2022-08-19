@@ -130,3 +130,15 @@ console.log(spread); //
 console.log(newspread);
 
 // { one: 1, two: 2 }
+
+// Note: Spread syntax effectively goes one level deep while copying an array. Therefore, it may be unsuitable for copying multidimensional arrays. The same is true with Object.assign() — no native operation in JavaScript does a deep clone.
+
+const a = [[1], [2], [3]];
+const b = [...a];
+
+b.shift().shift();
+//  1
+
+//  Oh no!  Now array 'a' is affected as well:
+a;
+//  [[], [2], [3]]
